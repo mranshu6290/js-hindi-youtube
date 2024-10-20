@@ -45,4 +45,23 @@
  * | Array              | "object"         |
  * | Object             | "object"         |
  * | Function           | "function"       |
+ * 
+ * 
+ * 
+ * 
+ * 
+/**
+ * Memory Management in JavaScript
+ * 
+ * **Stack** (for Primitive Types):
+ * - Stores values directly.
+ * - Passed by value: a copy is created.
+ * - Changes do not affect the original value.
+ * 
+ * **Heap** (for Non-Primitive Types):
+ * - Stores references to objects.
+ * - Passed by reference: changes affect the original variable.
+ * - Original value can be modified.
  */
+
+ 
