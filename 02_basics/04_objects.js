@@ -58,3 +58,46 @@ const entries = Object.entries(exampleObj); // Returns [["a", 1], ["b", 2], ["c"
 
 // You can check if an object has a specific property using hasOwnProperty().
 const hasValue = obj1.hasOwnProperty("key"); // Returns true or false based on the existence of the property
+
+
+
+
+
+//destrucying array and objects
+// it means shortnening the name of objects
+
+
+const course={
+coursename:"js in hindi",
+price:999,
+instructor:"anshu"
+
+}
+
+// to get course name we will ahve to type 
+
+console.log(course.coursename);
+
+
+// now we can't type the coursename every time to get it
+
+// const {} = objectname
+// const{value to be fetched}= objectname
+const {coursename}= course 
+
+// if we again want to shorten it the we can give it our own name
+
+// const {object to be g=feteched: name I like} = objectname
+
+ const {coursename: easy}=course
+
+ console.log (easy)
+
+
+ //undertasnding JSON
+
+ // they look simiar to object but the difference is that the keys are also in queotes or sting format and have to be wirtten like that
+
+
+
+ 
