@@ -2,14 +2,14 @@
 
 // Creating a singleton object using the Object constructor.
 // This means only one instance of this object exists.
-const obj = new Object();
+const singletonObj = new Object();
 
 // Creating an object using object literal notation.
 // This allows for multiple instances.
-const obj1 = {}; // This will output: {}
+const literalObj = {}; // This will output: {}
 
 // Objects can contain other objects.
-const obj2 = {
+const nestedObj = {
   name: {
     userfullname: {
       firstname: "himanshu",
@@ -27,18 +27,18 @@ const obj2 = {
 
 // Accessing nested objects can be done using dot notation or bracket notation.
 // The preferred way is to use dot notation:
-console.log(obj2.name.userfullname.firstname); // "himanshu"
+console.log(nestedObj.name.userfullname.firstname); // "himanshu"
 
 // Merging Objects
 
-const obj3 = { 1: 1, 2: 2, 3: 3 };
-const obj4 = { 4: 4, 5: 5, 6: 6 };
+const objA = { 1: 1, 2: 2, 3: 3 };
+const objB = { 4: 4, 5: 5, 6: 6 };
 
-// To combine objects, use Object.assign() to return a new object.
-const obj5 = Object.assign({}, obj3, obj4); // Merges obj3 and obj4 into obj5
+// To combine objects, use Object.assign() to create a new object.
+const mergedObj1 = Object.assign({}, objA, objB); // Merges objA and objB into mergedObj1
 
 // Alternatively, you can use the spread operator to merge objects:
-const mergedObj = { ...obj3, ...obj4 };
+const mergedObj2 = { ...objA, ...objB };
 
 // Working with Arrays of Objects
 
@@ -51,53 +51,35 @@ const keys = Object.keys(exampleObj); // Returns ["a", "b", "c"]
 // Get an array of values
 const values = Object.values(exampleObj); // Returns [1, 2, 3]
 
-// Get an array of key-value pairs as arrays
+// Get an array of key-value pairs
 const entries = Object.entries(exampleObj); // Returns [["a", 1], ["b", 2], ["c", 3]]
 
 // Checking for Property Existence
 
 // You can check if an object has a specific property using hasOwnProperty().
-const hasValue = obj1.hasOwnProperty("key"); // Returns true or false based on the existence of the property
+const hasValue = literalObj.hasOwnProperty("key"); // Returns true or false based on existence
 
+// Destructuring Arrays and Objects
 
+// Destructuring allows you to extract values from objects or arrays and assign them to variables.
+const course = {
+  coursename: "JavaScript in Hindi",
+  price: 999,
+  instructor: "Anshu"
+};
 
+// To get the course name directly:
+const { coursename } = course; // Extracts coursename
 
+console.log(coursename); // "JavaScript in Hindi"
 
-//destrucying array and objects
-// it means shortnening the name of objects
+// You can also rename the destructured variable:
+const { coursename: easyName } = course; // Renames to easyName
 
+console.log(easyName); // "JavaScript in Hindi"
 
-const course={
-coursename:"js in hindi",
-price:999,
-instructor:"anshu"
+// Understanding JSON
 
-}
-
-// to get course name we will ahve to type 
-
-console.log(course.coursename);
-
-
-// now we can't type the coursename every time to get it
-
-// const {} = objectname
-// const{value to be fetched}= objectname
-const {coursename}= course 
-
-// if we again want to shorten it the we can give it our own name
-
-// const {object to be g=feteched: name I like} = objectname
-
- const {coursename: easy}=course
-
- console.log (easy)
-
-
- //undertasnding JSON
-
- // they look simiar to object but the difference is that the keys are also in queotes or sting format and have to be wirtten like that
-
-
-
- 
+// JSON (JavaScript Object Notation) looks similar to objects but has key-value pairs enclosed in quotes.
+const jsonString = '{"coursename": "JavaScript in Hindi", "price": 999, "instructor": "Anshu"}';
+// JSON keys must be in string format, and JSON is typically used for data interchange.
