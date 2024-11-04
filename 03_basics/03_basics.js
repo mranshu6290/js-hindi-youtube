@@ -1,70 +1,52 @@
-//
+// User object definition
+const user = {
+    username: "anshu", // Initial username
+    price: 999, // Price property
+    welcomeMessage: function() {
+        // Method to log a welcome message
+        console.log(`${this.username}, welcome!`); // Accessing username with 'this'
+        console.log(this); // Logging the context (user object)
+    }
+};
 
-const user ={
-username:"anshu",
-price:999,
-welcomeMessage: function ()
-{
-    console.log(`${this.username} Welcome !!`);
-    console.log(this);
+// Log the welcome message for the initial username
+console.log(user.welcomeMessage()); // Calls the method, outputs welcome message
+
+// Update the username and log the new welcome message
+user.username = "ganju"; // Changing the username property
+console.log(user.welcomeMessage()); // Outputs updated welcome message
+
+// Log the global context
+console.log(this); // In strict mode, `this` is an empty object ({}); in browser, it's the window object
+
+// Function example
+function hello() {
+    const name = "anshu1"; // Local variable
+    console.log(`${this.name}, welcome!`); // Logs undefined because there's no object calling this function
 }
 
-}
-console.log(user.welcomeMessage());
+hello(); // Calling the function, output is undefined
 
+// Arrow function example
+const abc = function() {
+    const name = "anshu1"; // Local variable
+    console.log(`${this.name}, welcome!`); // Still refers to the global context, output is undefined
+};
 
-user.username="ganju"
-console.log(user.welcomeMessage());
+// Convert the function to an arrow function
+const abc1 = () => {
+    const name = "anshu1"; // Local variable
+    console.log(`${this.name}, welcome!`); // Inherits `this` from the surrounding scope, may still output undefined
+};
 
+// Arrow functions have different behavior for `this` compared to regular functions.
+// In arrow functions, `this` refers to the lexical context, meaning the `this` value
+// is inherited from the enclosing scope.
 
-//do a cosnole log
+// Implicit return in arrow functions
+// If the function consists of a single expression, we can omit the curly braces and
+// the return keyword:
+const sum = (a, b) => a + b; // Implicit return of the sum of a and b
 
-console.log(this);
-
-
-//current contect is empty object i.e. {} if you just print in the console
-
-//current context is Window in web browser, that is why we can capture windows actions like clicks etc
-
-
-//arrow fxn
-
-function hello()
-
-{
-    const name="anshu1"
-    console.log(`${this.name} Welcome !!!!`);
-    
-}
-
-hello() // here output is undefuned as there is no object cllaing this function
-
-//arrow function
-
-//this is a sorter way to write function and we just skip the word function when declaring it and assi7ing ti a vairable
-
-const abc =function ()
-
-{
-    const name="anshu1"
-    console.log(`${this.name} Welcome !!!!`);
-    
-}
-
-//now remove the rowrd function and replace by => after the ()
-
-
-const abc1 = () =>
-
-{
-    const name="anshu1"
-    console.log(`${this.name} Welcome !!!!`);
-    
-}
-
-
-//implicit return
-
-// If statement is one line only then we can get rid of {} and return fucntion
-
-//Pending
+// If we need to return an object, we must wrap it in parentheses:
+const getUser = () => ({ username: "himanshu" }); // Explicit return of an object
