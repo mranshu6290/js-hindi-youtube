@@ -107,3 +107,124 @@ getElementById() is case-sensitive and only returns the first matching element.
 innerHTML can be used to inject HTML content, but textContent is safer if you just want to set plain text (to avoid potential security issues like XSS).
 Final Thoughts:
 Understanding the DOM structure and how to manipulate it is fundamental for web development. By using methods like getElementById() and innerHTML, you can dynamically interact with and modify the content of your web pages.
+
+
+
+
+
+//Concepts
+
+Selecting Elements
+Go to browser and iopen elements tab and select the element
+Now go to console
+
+
+document.getlementbyid // this is a mthod and we need ot give it id
+
+example <title>
+
+    document.getlementbyid('title') // now this will return the entire line
+
+    I want the id only so we can use .id or .className etc we will get the required items
+
+
+
+    // to get all attribvutes we use get attribute and we pass the attribute hta we need
+
+    document,getelelentbyud('title').getrattribute9'iud)
+
+    we can use set attribute to set the vakues as well
+
+    thsi will replac ehte existing attribute
+
+    const title=  document,getelelentbyud('title').getrattribute9'iud)
+
+    To apply style,
+
+    we can simpley select the ID and use document,getelelentbyud('title').style.bodybgcolor='green'
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Manipulation Example</title>
+</head>
+<body>
+  <!-- Sample HTML elements -->
+  <div id="title">This is the title</div>
+  <h1>First Heading</h1>
+  <h1>Second Heading</h1>
+  <p>This is a paragraph.</p>
+
+  <!-- Button to trigger DOM manipulation -->
+  <button onclick="changeContent()">Change Content</button>
+
+  <script>
+    // Extracting text content from elements
+
+    // innerText: Returns visible text (ignores hidden content like text in <style> or <script> tags)
+    let titleText = document.getElementById('title').innerText;
+    console.log("innerText:", titleText);
+
+    // textContent: Returns all text content, including hidden content
+    let titleTextContent = document.getElementById('title').textContent;
+    console.log("textContent:", titleTextContent);
+
+    // innerHTML: Returns HTML content inside an element, including any HTML tags
+    let htmlContent = document.getElementById('title').innerHTML;
+    console.log("innerHTML:", htmlContent);
+
+    // Querying elements using querySelector and querySelectorAll
+    // querySelector: Selects the first element matching a CSS selector
+    let firstHeading = document.querySelector('h1');
+    console.log("First heading (querySelector):", firstHeading.innerText);
+
+    // querySelectorAll: Selects all elements matching a CSS selector and returns a NodeList
+    let allHeadings = document.querySelectorAll('h1');
+    allHeadings.forEach((heading) => {
+      console.log("All headings (querySelectorAll):", heading.innerText);
+    });
+
+    // Using CSS selectors in querySelector/querySelectorAll
+    let titleElement = document.querySelector('#title');
+    let paragraphs = document.querySelectorAll('p');
+    console.log("Title element (querySelector):", titleElement.innerText);
+    paragraphs.forEach((para) => {
+      console.log("Paragraphs (querySelectorAll):", para.innerText);
+    });
+
+    // NodeList and Array Methods
+    let nodeList = document.querySelectorAll('h1'); // NodeList
+    nodeList.forEach((node) => {
+      console.log("NodeList content:", node.innerText);
+    });
+
+    // Converting NodeList to Array and using Array methods like map()
+    let nodeArray = Array.from(nodeList);  // Convert NodeList to Array
+    nodeArray.map((node) => {
+      console.log("Converted NodeList to Array:", node.innerText);
+    });
+
+    // HTMLCollection example (using getElementsByClassName)
+    let htmlCollection = document.getElementsByClassName('example-class'); // HTMLCollection
+    console.log("HTMLCollection:", htmlCollection);
+
+    // Convert HTMLCollection to Array
+    let arrayFromHTMLCollection = Array.from(htmlCollection);
+    arrayFromHTMLCollection.map((element) => {
+      console.log("Converted HTMLCollection to Array:", element.innerText);
+    });
+
+    // Prototype Method (Example with Array prototype)
+    let array = [1, 2, 3];
+    console.log(array.__proto__); // Shows the prototype methods available for arrays (like .push(), .map(), etc.)
+
+    // Function to dynamically change content when button is clicked
+    function changeContent() {
+      document.getElementById('title').innerHTML = '<h2>Content Changed!</h2><p>New content has been added.</p>';
+    }
+  </script>
+</body>
+</html>
