@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling Notes</title>
+</head>
+<body>
+
+    <!--
+    All browser activities are handled within <script> tags.
+
+    Approach 1:
+    You can add the onclick attribute directly in the HTML, like in an image tag with something like 
+    onclick="alert('Hello!')" to trigger an alert when clicked. However, this method isn't the best practice because 
+    it mixes HTML and JavaScript.
+
+    A better way is to write the JavaScript separately inside a <script> tag. For example, you can target an element by 
+    its ID and assign an onclick function to it like 
+    document.getElementById('owl').onclick = function() { alert('Owl clicked!') }.
+
+    Approach 2:
+    The preferred approach is to use addEventListener(), which provides more flexibility. This method allows you 
+    to add multiple event listeners to the same element or remove them later. For instance, you can use 
+    document.getElementById('owl').addEventListener('click', function() { alert('Owl clicked with addEventListener!') });
+    The first argument is the event type (e.g., 'click'), the second is the callback function, and the third is 
+    a boolean flag that controls event propagation.
+
+    If the third argument is false (default), the event will bubble. If set to true, the event will be captured 
+    in the capturing phase.
+
+    Event Propagation:
+    Events propagate in two phases:
+    1. Bubbling (default): The event propagates from the target (inner element) outward to its ancestors (outer elements). 
+       For example, when you click on a <li> inside a <ul>, the event will bubble up from the <li> to the <ul>.
+    2. Capturing: The event propagates from the outermost element to the innermost (target). You can set the third 
+       parameter of addEventListener() to true to enable this phase.
+
+    To stop an event from propagating further, use event.stopPropagation().
+
+    Preventing Default Behavior:
+    Sometimes you want to prevent the default behavior of an event, such as preventing a link from navigating. 
+    This can be done by calling event.preventDefault(). For example, if you don't want a link to open a webpage, 
+    event.preventDefault() will stop that from happening.
+
+    Common Event Properties:
+    - type: The event type, such as 'click', 'submit', etc.
+    - target: The element that triggered the event.
+    - currentTarget: The element the event listener is attached to.
+    - clientX and clientY: Mouse coordinates relative to the viewport.
+    - altKey, ctrlKey, shiftKey: Boolean values indicating if the corresponding key was pressed.
+    - keyCode: The key code of the key that was pressed (for keyboard events).
+
+    Event Bubbling vs. Capturing:
+    - Bubbling: The event goes from the inner element outward to the outer elements.
+    - Capturing: The event goes from the outermost element inward to the target element.
+
+    The default behavior is bubbling, but you can prevent bubbling by using stopPropagation() or control it using 
+    addEventListener() with the third parameter.
+    -->
+
+</body>
+</html>
