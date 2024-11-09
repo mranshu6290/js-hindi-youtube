@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHttpRequest Explanation</title>
+</head>
+<body>
+    <script>
+        // **Key Points on XMLHttpRequest API:**
+        // 1. XMLHttpRequest is used to send HTTP requests and handle responses asynchronously.
+        // 2. It has different states that represent the request lifecycle (e.g., UNSENT, OPENED, LOADING, DONE).
+        // 3. You can track the request status using the `onreadystatechange` event handler.
+        // 4. When the request is complete and successful, you can use `responseText` to access the data returned from the server.
+        // 5. If the response is in JSON format, use `JSON.parse()` to convert the string into a JavaScript object.
+        // 6. `console.log()` is used for debugging and logging information to the console in the browser.
+
+        // **Creating a new XMLHttpRequest object:**
+        const xhr = new XMLHttpRequest();
+
+        // **Opening the request:**
+        // `open(method, url)` method is used to initialize the request.
+        // 'GET' is the HTTP method (it can also be 'POST', 'PUT', etc.).
+        // The second argument is the URL (endpoint) you are making the request to.
+        xhr.open('GET', 'https://api.example.com/data');  // Replace with your API endpoint
+
+        // **Sending the request:**
+        // After the request is opened, use `send()` to send it to the server.
+        xhr.send();
+
+        // **Handling the response:**
+        // The `onreadystatechange` event handler is triggered whenever the readyState of the request changes.
+        // When `readyState` is 4 (DONE) and `status` is 200 (OK), the response is fully received and successful.
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Log the raw response text to the console (string format).
+                console.log(xhr.responseText);  // The raw response text from the server.
+
+                // **Converting the response to a JSON object (if the response is JSON):**
+                // If the response is a JSON string, use JSON.parse() to convert it into an object.
+                const responseObject = JSON.parse(xhr.responseText);  // Converts string to JSON object.
+                console.log(responseObject);  // Now the response can be accessed like an object.
+            }
+        };
+
+        // **Explanation of `responseText` and parsing it:**
+        // - `responseText`: Contains the raw response from the server (usually a string).
+        // - If the server returns data in JSON format, you can use `JSON.parse()` to convert it into a JavaScript object.
+
+        // Example: If the server returns a JSON response like: 
+        // { "name": "John", "age": 30 }
+        // You can extract values like this:
+        const parsedData = JSON.parse(xhr.responseText);
+        console.log(parsedData.name); // Logs "John"
+        console.log(parsedData.age);  // Logs 30
+
+        // **Note about `console.log`:**
+        // - `console.log()` is a built-in method for debugging in web browsers.
+        // - It is implemented by the JavaScript engine in browsers (like V8 engine in Chrome).
+        // - `console.log()` prints messages to the browser's developer console.
+
+    </script>
+</body>
+</html>
