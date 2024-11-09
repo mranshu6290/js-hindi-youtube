@@ -5,10 +5,13 @@ Structure:
 css
 Copy code
 Window Object
-   └─> Document (Represents the HTML page)
+   └─> Document (Represents the HTML page)      
          └─> HTML (Root element)
                ├─> <head> (Contains metadata like title and meta tags)
                └─> <body> (Contains the content of the page, like divs, headers, etc.)
+
+Formula: WDHTMHBD
+                  
 Key Concepts:
 Window Object: Represents the browser window. It contains the document object, which represents the content of the page. In most cases, you don’t need to reference window explicitly, because the global context of the browser is the window itself.
 
@@ -39,41 +42,35 @@ How to Access and Manipulate the DOM:
 Console Log the Document Object:
 
 You can log the document object to the console to see the entire DOM structure.
-js
-Copy code
+
 console.log(document);
 This will show you the full document object in the browser's developer console, where you can explore the HTML structure.
 
 Access Elements by ID:
 
 To access any element by its ID, you can use getElementById().
-js
-Copy code
+
 let element = document.getElementById('container');
 console.log(element); // Logs the div with id "container"
 Modify Content:
 
 You can modify the content of an element using .innerHTML or .textContent.
-js
-Copy code
+
 document.getElementById('container').innerHTML = '<h2>New Heading</h2><p>Updated content.</p>';
 This will replace the contents of the element with ID "container" with the new HTML.
 
 Common Methods for DOM Manipulation:
 getElementById: Finds an element by its ID.
 
-js
-Copy code
+
 let header = document.getElementById('header');
 innerHTML: Sets or gets the HTML content inside an element.
 
-js
-Copy code
+
 document.getElementById('header').innerHTML = 'New Header Text';
 textContent: Sets or gets the text content of an element.
 
-js
-Copy code
+
 document.getElementById('header').textContent = 'Just Text, No HTML';
 Example of DOM Manipulation:
 html
