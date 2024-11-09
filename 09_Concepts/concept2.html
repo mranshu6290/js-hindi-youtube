@@ -1,0 +1,45 @@
+// setTimeout --> This is a browser function that delays the execution of a function.
+
+// Example: Using setTimeout to execute code after a delay.
+setTimeout(function() {
+    console.log("Hello");
+}, 2000); 
+// This will wait for 2 seconds before executing the code inside the function.
+
+// setInterval --> This function repeatedly calls a function at a fixed interval, unlike setTimeout which only runs once.
+
+// Example: Using setInterval to repeatedly execute a function at a set interval.
+const intervalId = setInterval(function() {
+    console.log("Hello every 2 seconds");
+}, 2000);
+// This will log "Hello every 2 seconds" to the console every 2 seconds.
+
+// If we want to cancel a setTimeout or setInterval, we can use clearTimeout and clearInterval respectively.
+// clearTimeout and clearInterval require a reference to the timeout or interval.
+
+const timeoutId = setTimeout(function() {
+    console.log("Hello after 2 seconds");
+}, 2000);
+
+// To cancel the timeout before it executes, use clearTimeout with the reference (timeoutId).
+clearTimeout(timeoutId);  // This cancels the timeout, so the "Hello" will never be logged.
+
+// Example of using clearInterval to stop an interval:
+const intervalId2 = setInterval(function() {
+    console.log("This will stop after 5 seconds");
+}, 1000);
+
+setTimeout(function() {
+    // After 5 seconds, stop the interval.
+    clearInterval(intervalId2);  // This stops the interval from executing further.
+}, 5000);
+
+// You can also pass additional arguments to the function in setInterval or setTimeout:
+
+// Example: Passing additional parameters to the callback function.
+const intervalId3 = setInterval(function(message) {
+    console.log(message);  // Prints the message passed as a parameter
+}, 1000, "Hello with parameters");
+
+// To clear the interval, use clearInterval with the interval reference.
+clearInterval(intervalId3);  // This will stop the interval and prevent the message from being logged repeatedly.
