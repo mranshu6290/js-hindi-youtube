@@ -8,6 +8,7 @@
  * Using console.table to display multiple values:
  * const a = 1, b = 2, c = 3, d = 4;
  * console.table([a, b, c, d]); // Displays values in a table format
+ Formula: VLC
  */
 
 
