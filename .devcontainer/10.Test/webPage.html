@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .links a {
+            margin: 10px;
+            text-decoration: none;
+            color: #4CAF50;
+            font-size: 18px;
+        }
+        .data-container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .data-container pre {
+            background-color: #eee;
+            padding: 20px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>API Data Fetcher</h1>
+
+    <div class="links">
+        <a href="#" onclick="fetchData('https://jsonplaceholder.typicode.com/posts/1')">Fetch Post 1</a>
+        <a href="#" onclick="fetchData('https://jsonplaceholder.typicode.com/users/1')">Fetch User 1</a>
+        <a href="#" onclick="fetchData('https://jsonplaceholder.typicode.com/comments?postId=1')">Fetch Comments for Post 1</a>
+    </div>
+
+    <div id="data-container" class="data-container">
+        <p>Data will appear here...</p>
+    </div>
+
+    <script>
+        function fetchData(url) {
+            document.getElementById('data-container').innerHTML = '<p>Loading...</p>';
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('data-container').innerHTML = 
+                        '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                })
+                .catch(error => {
+                    document.getElementById('data-container').innerHTML = 
+                        '<p style="color: red;">Error fetching data: ' + error.message + '</p>';
+                });
+        }
+    </script>
+
+</body>
+</html>
